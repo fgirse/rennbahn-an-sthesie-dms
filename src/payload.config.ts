@@ -63,7 +63,7 @@ export default buildConfig({
     // Node.js 24 on macOS uses a bundled CA store that may not include
     // all intermediate CAs used by MongoDB Atlas. Allow invalid certs in
     // development only; production always enforces strict TLS.
-    mongooseOptions: process.env.NODE_ENV !== 'production'
+    connectOptions: process.env.NODE_ENV !== 'production'
       ? { tlsAllowInvalidCertificates: true }
       : {},
   }),

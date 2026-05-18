@@ -1,5 +1,5 @@
 import type { CollectionConfig } from 'payload'
-import { UserRole } from '../../lib/types.ts'
+import { UserRole } from '../../lib/types'
 
 export const Media: CollectionConfig = {
   slug: 'media',

@@ -1,5 +1,5 @@
 import type { Access, FieldAccess } from 'payload'
-import { UserRole } from '../../lib/types.ts'
+import { UserRole } from '../../lib/types'
 
 export const isAdmin: Access = ({ req }) => {
   return req.user?.role === UserRole.SYSTEM_ADMIN

@@ -1,6 +1,6 @@
 import type { CollectionConfig } from 'payload'
-import { UserRole } from '../../lib/types.ts'
-import { isAdmin, isAdminOrSelf, isSelf } from './access.ts'
+import { UserRole } from '../../lib/types'
+import { isAdmin, isAdminOrSelf, isSelf } from './access'
 
 export const Users: CollectionConfig = {
   slug: 'users',

@@ -1,5 +1,5 @@
 import type { CollectionConfig } from 'payload'
-import { isAdmin, isAdminOrQM, isAuthenticated } from '../Users/access.ts'
+import { isAdmin, isAdminOrQM, isAuthenticated } from '../Users/access'
 
 export const DocumentCategories: CollectionConfig = {
   slug: 'document-categories',

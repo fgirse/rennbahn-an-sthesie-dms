@@ -1,5 +1,5 @@
 import type { CollectionBeforeChangeHook, CollectionAfterChangeHook } from 'payload'
-import { DocumentStatus, DocumentType, RETENTION_YEARS } from '../../lib/types.ts'
+import { DocumentStatus, DocumentType, RETENTION_YEARS } from '../../lib/types'
 
 export const autoVersionHook: CollectionBeforeChangeHook = async ({ data, operation, originalDoc }) => {
   if (operation === 'create') {

@@ -1,5 +1,5 @@
 import type { Access, Where } from 'payload'
-import { UserRole, DocumentStatus } from '../../lib/types.ts'
+import { UserRole, DocumentStatus } from '../../lib/types'
 
 export const documentsReadAccess: Access = ({ req }) => {
   const user = req.user

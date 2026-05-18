@@ -1,18 +1,18 @@
 import type { CollectionConfig } from 'payload'
-import { DocumentStatus, DocumentType, WorkflowType, UserRole } from '../../lib/types.ts'
+import { DocumentStatus, DocumentType, WorkflowType, UserRole } from '../../lib/types'
 import {
   documentsReadAccess,
   documentsCreateAccess,
   documentsUpdateAccess,
   documentsDeleteAccess,
-} from './access.ts'
+} from './access'
 import {
   autoVersionHook,
   computeRetentionHook,
   auditOnChangeHook,
   notifyOnStatusChangeHook,
   blockArchivedUpdateHook,
-} from './hooks.ts'
+} from './hooks'
 
 export const Documents: CollectionConfig = {
   slug: 'documents',

@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #003366;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #0066cc;
+  --color-secondary-foreground: #ffffff;
+  --color-accent: #e8f0fe;
+  --color-accent-foreground: #003366;
+  --color-destructive: #dc2626;
+  --color-destructive-foreground: #ffffff;
+  --color-warning: #d97706;
+  --color-warning-foreground: #ffffff;
+  --color-success: #16a34a;
+  --color-success-foreground: #ffffff;
+  --color-background: #ffffff;
+  --color-foreground: #0f172a;
+  --color-muted: #f1f5f9;
+  --color-muted-foreground: #64748b;
+  --color-card: #ffffff;
+  --color-card-foreground: #0f172a;
+  --color-border: #e2e8f0;
+  --color-input: #e2e8f0;
+  --color-ring: #003366;
+  --radius: 0.5rem;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  /* Document status colors */
+  --color-status-draft: #94a3b8;
+  --color-status-review: #f59e0b;
+  --color-status-approved: #16a34a;
+  --color-status-revision: #ea580c;
+  --color-status-archived: #6b7280;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  .status-badge-draft {
+    background-color: #f1f5f9;
+    color: #475569;
+  }
+  .status-badge-review {
+    background-color: #fef3c7;
+    color: #92400e;
+  }
+  .status-badge-approved {
+    background-color: #dcfce7;
+    color: #166534;
+  }
+  .status-badge-revision {
+    background-color: #ffedd5;
+    color: #9a3412;
+  }
+  .status-badge-archived {
+    background-color: #f3f4f6;
+    color: #374151;
+  }
+}

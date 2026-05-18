@@ -1,0 +1,233 @@
+{
+  "common": {
+    "appName": "DMS Rennbahnklinik",
+    "department": "Abteilung Anästhesiologie",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "close": "Schliessen",
+    "confirm": "Bestätigen",
+    "loading": "Wird geladen...",
+    "error": "Fehler",
+    "success": "Erfolgreich",
+    "search": "Suchen",
+    "filter": "Filtern",
+    "export": "Exportieren",
+    "upload": "Hochladen",
+    "download": "Herunterladen",
+    "view": "Anzeigen",
+    "back": "Zurück",
+    "next": "Weiter",
+    "previous": "Vorherige",
+    "yes": "Ja",
+    "no": "Nein",
+    "all": "Alle",
+    "none": "Keine",
+    "required": "Pflichtfeld",
+    "optional": "Optional",
+    "noResults": "Keine Ergebnisse gefunden",
+    "version": "Version"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "documents": "Dokumente",
+    "tasks": "Meine Aufgaben",
+    "reports": "Berichte",
+    "settings": "Einstellungen",
+    "admin": "Administration",
+    "logout": "Abmelden",
+    "profile": "Profil"
+  },
+  "auth": {
+    "login": "Anmelden",
+    "logout": "Abmelden",
+    "email": "E-Mail-Adresse",
+    "password": "Passwort",
+    "forgotPassword": "Passwort vergessen?",
+    "signInWith": "Anmelden mit",
+    "ssoLogin": "Anmelden mit Active Directory (SSO)",
+    "mfaTitle": "Zwei-Faktor-Authentifizierung",
+    "mfaDescription": "Geben Sie den 6-stelligen Code aus Ihrer Authenticator-App ein.",
+    "mfaCode": "Authenticator-Code",
+    "mfaBackupCode": "Backup-Code verwenden",
+    "verifyMfa": "Code verifizieren",
+    "invalidCredentials": "Ungültige E-Mail-Adresse oder Passwort.",
+    "sessionExpired": "Ihre Sitzung ist abgelaufen. Bitte erneut anmelden.",
+    "accountDisabled": "Ihr Konto ist deaktiviert. Kontaktieren Sie den Administrator.",
+    "loginTitle": "Willkommen beim DMS",
+    "loginSubtitle": "Dokumentenmanagementsystem der Abteilung Anästhesiologie, Rennbahnklinik"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Willkommen, {name}",
+    "stats": {
+      "totalDocuments": "Dokumente gesamt",
+      "pendingTasks": "Offene Aufgaben",
+      "expiringDocuments": "Bald ablaufend",
+      "readConfirmationsPending": "Ausstehende Lesebestätigungen"
+    },
+    "recentDocuments": "Zuletzt geänderte Dokumente",
+    "myTasks": "Meine Aufgaben",
+    "expiringDocuments": "Bald ablaufende Dokumente",
+    "documentsByStatus": "Dokumente nach Status",
+    "trainingStatus": "Schulungsstand"
+  },
+  "documents": {
+    "title": "Dokumente",
+    "new": "Neues Dokument",
+    "search": "Dokumente suchen...",
+    "filters": "Filter",
+    "documentNumber": "Dokumentnummer",
+    "documentTitle": "Titel",
+    "documentType": "Typ",
+    "status": "Status",
+    "version": "Version",
+    "owner": "Verantwortlicher",
+    "validUntil": "Gültig bis",
+    "updatedAt": "Geändert",
+    "actions": "Aktionen",
+    "noDocuments": "Keine Dokumente gefunden.",
+    "types": {
+      "sop": "SOP",
+      "notfall_checkliste": "Notfall-Checkliste",
+      "arbeitsplatz_checkliste": "Arbeitsplatz-Checkliste",
+      "einwilligungsbogen": "Einwilligungsbogen",
+      "qualitaetsdokument": "Qualitätsdokument",
+      "formular_vorlage": "Formular / Vorlage",
+      "schulungsunterlage": "Schulungsunterlage",
+      "geraete_wartung": "Geräte-/Wartungsdokumentation"
+    },
+    "statuses": {
+      "entwurf": "Entwurf",
+      "in_pruefung": "In Prüfung",
+      "freigegeben": "Freigegeben",
+      "in_revision": "In Revision",
+      "archiviert": "Archiviert"
+    },
+    "workflow": {
+      "einstufig": "Einstufig",
+      "zweistufig": "Zweistufig",
+      "dreistufig": "Dreistufig"
+    },
+    "detail": {
+      "overview": "Übersicht",
+      "content": "Inhalt",
+      "history": "Änderungshistorie",
+      "confirmations": "Lesebestätigungen",
+      "workflow": "Freigabe-Workflow",
+      "sendForReview": "Zur Prüfung einreichen",
+      "approve": "Freigeben",
+      "reject": "Ablehnen",
+      "archive": "Archivieren",
+      "startRevision": "Revision starten",
+      "readAndConfirm": "Gelesen und verstanden",
+      "alreadyConfirmed": "Bereits bestätigt am {date}",
+      "confirmationRequired": "Diese Dokument erfordert Ihre Lesebestätigung.",
+      "confirmationDialog": {
+        "title": "Lesebestätigung",
+        "description": "Ich bestätige hiermit, dass ich das Dokument \"{title}\" (Version {version}) gelesen und verstanden habe.",
+        "confirm": "Ja, ich bestätige die Lektüre"
+      }
+    },
+    "upload": {
+      "title": "Neues Dokument erstellen",
+      "dragDrop": "Datei hierher ziehen oder klicken zum Auswählen",
+      "supportedFormats": "Unterstützte Formate: PDF, DOCX, XLSX, PPTX, JPG, PNG",
+      "maxSize": "Maximale Dateigrösse: 50 MB"
+    }
+  },
+  "tasks": {
+    "title": "Meine Aufgaben",
+    "pending": "Offen",
+    "completed": "Abgeschlossen",
+    "overdue": "Überfällig",
+    "noTasks": "Keine offenen Aufgaben.",
+    "dueDate": "Fällig am",
+    "taskType": {
+      "pruefung": "Prüfung",
+      "freigabe": "Freigabe",
+      "lesebestaetigung": "Lesebestätigung"
+    }
+  },
+  "reports": {
+    "title": "Berichte",
+    "auditTrail": "Audit-Trail",
+    "trainingStatus": "Schulungsstand",
+    "expiringDocuments": "Ablaufende Dokumente",
+    "documentList": "Dokumentenliste",
+    "generateReport": "Bericht generieren",
+    "exportCsv": "Als CSV exportieren",
+    "exportPdf": "Als PDF exportieren",
+    "dateRange": "Zeitraum",
+    "from": "Von",
+    "to": "Bis",
+    "columns": {
+      "user": "Benutzer",
+      "role": "Rolle",
+      "action": "Aktion",
+      "document": "Dokument",
+      "version": "Version",
+      "timestamp": "Zeitstempel",
+      "confirmed": "Bestätigt am",
+      "notConfirmed": "Nicht bestätigt"
+    }
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "profile": "Profil",
+    "security": "Sicherheit",
+    "language": "Sprache",
+    "notifications": "Benachrichtigungen",
+    "mfa": {
+      "title": "Zwei-Faktor-Authentifizierung",
+      "enable": "MFA aktivieren",
+      "disable": "MFA deaktivieren",
+      "setup": "MFA einrichten",
+      "scanQr": "Scannen Sie den QR-Code mit Ihrer Authenticator-App",
+      "enterCode": "Geben Sie den generierten Code ein, um die Einrichtung abzuschliessen",
+      "backupCodes": "Backup-Codes",
+      "backupCodesDescription": "Speichern Sie diese Backup-Codes sicher. Sie können jeden Code einmalig verwenden, wenn Sie keinen Zugriff auf Ihre Authenticator-App haben.",
+      "enabled": "MFA ist aktiv",
+      "disabled": "MFA ist nicht aktiv"
+    },
+    "password": {
+      "change": "Passwort ändern",
+      "current": "Aktuelles Passwort",
+      "new": "Neues Passwort",
+      "confirm": "Passwort bestätigen",
+      "requirements": "Mind. 12 Zeichen, Gross-/Kleinbuchstaben, Zahl und Sonderzeichen"
+    }
+  },
+  "notifications": {
+    "title": "Benachrichtigungen",
+    "markAllRead": "Alle als gelesen markieren",
+    "noNotifications": "Keine neuen Benachrichtigungen",
+    "types": {
+      "review_requested": "Prüfungsaufgabe",
+      "approval_requested": "Freigabeaufgabe",
+      "document_approved": "Dokument freigegeben",
+      "document_rejected": "Dokument abgelehnt",
+      "read_confirmation_required": "Lesebestätigung",
+      "validity_expiring": "Ablaufende Gültigkeit",
+      "task_overdue": "Überfällige Aufgabe"
+    }
+  },
+  "roles": {
+    "systemadmin": "Systemadministrator",
+    "qm_beauftragter": "QM-Beauftragter",
+    "abteilungsleitung": "Abteilungsleitung",
+    "facharzt": "Anästhesie-Facharzt",
+    "pflegefachperson": "Anästhesiepflegefachperson",
+    "externer_auditor": "Externer Auditor"
+  },
+  "errors": {
+    "generic": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
+    "notFound": "Seite nicht gefunden.",
+    "unauthorized": "Sie haben keine Berechtigung für diese Aktion.",
+    "forbidden": "Zugriff verweigert.",
+    "networkError": "Netzwerkfehler. Bitte überprüfen Sie Ihre Verbindung.",
+    "archivedDocument": "Dieses Dokument ist archiviert und kann nicht geändert werden.",
+    "documentLocked": "Dieses Dokument ist gesperrt."
+  }
+}

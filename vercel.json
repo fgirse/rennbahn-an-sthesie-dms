@@ -1,0 +1,16 @@
+{
+  "crons": [
+    {
+      "path": "/api/cron/expiry-check",
+      "schedule": "0 7 * * 1-5"
+    }
+  ],
+  "functions": {
+    "src/app/api/[...payload]/route.ts": {
+      "maxDuration": 60
+    },
+    "src/app/api/cron/expiry-check/route.ts": {
+      "maxDuration": 300
+    }
+  }
+}

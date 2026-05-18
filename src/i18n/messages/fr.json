@@ -1,0 +1,233 @@
+{
+  "common": {
+    "appName": "DMS Rennbahnklinik",
+    "department": "Département d'anesthésiologie",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "close": "Fermer",
+    "confirm": "Confirmer",
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès",
+    "search": "Rechercher",
+    "filter": "Filtrer",
+    "export": "Exporter",
+    "upload": "Téléverser",
+    "download": "Télécharger",
+    "view": "Afficher",
+    "back": "Retour",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "yes": "Oui",
+    "no": "Non",
+    "all": "Tous",
+    "none": "Aucun",
+    "required": "Obligatoire",
+    "optional": "Optionnel",
+    "noResults": "Aucun résultat trouvé",
+    "version": "Version"
+  },
+  "nav": {
+    "dashboard": "Tableau de bord",
+    "documents": "Documents",
+    "tasks": "Mes tâches",
+    "reports": "Rapports",
+    "settings": "Paramètres",
+    "admin": "Administration",
+    "logout": "Déconnexion",
+    "profile": "Profil"
+  },
+  "auth": {
+    "login": "Connexion",
+    "logout": "Déconnexion",
+    "email": "Adresse e-mail",
+    "password": "Mot de passe",
+    "forgotPassword": "Mot de passe oublié?",
+    "signInWith": "Se connecter avec",
+    "ssoLogin": "Se connecter avec Active Directory (SSO)",
+    "mfaTitle": "Authentification à deux facteurs",
+    "mfaDescription": "Saisissez le code à 6 chiffres de votre application d'authentification.",
+    "mfaCode": "Code d'authentification",
+    "mfaBackupCode": "Utiliser un code de secours",
+    "verifyMfa": "Vérifier le code",
+    "invalidCredentials": "Adresse e-mail ou mot de passe invalide.",
+    "sessionExpired": "Votre session a expiré. Veuillez vous reconnecter.",
+    "accountDisabled": "Votre compte est désactivé. Contactez l'administrateur.",
+    "loginTitle": "Bienvenue sur le DMS",
+    "loginSubtitle": "Système de gestion documentaire, Département d'anesthésiologie, Rennbahnklinik"
+  },
+  "dashboard": {
+    "title": "Tableau de bord",
+    "welcome": "Bienvenue, {name}",
+    "stats": {
+      "totalDocuments": "Total des documents",
+      "pendingTasks": "Tâches en attente",
+      "expiringDocuments": "Expirant bientôt",
+      "readConfirmationsPending": "Confirmations de lecture en attente"
+    },
+    "recentDocuments": "Documents récemment modifiés",
+    "myTasks": "Mes tâches",
+    "expiringDocuments": "Documents expirant",
+    "documentsByStatus": "Documents par statut",
+    "trainingStatus": "État de la formation"
+  },
+  "documents": {
+    "title": "Documents",
+    "new": "Nouveau document",
+    "search": "Rechercher des documents...",
+    "filters": "Filtres",
+    "documentNumber": "N° de document",
+    "documentTitle": "Titre",
+    "documentType": "Type",
+    "status": "Statut",
+    "version": "Version",
+    "owner": "Responsable",
+    "validUntil": "Valide jusqu'au",
+    "updatedAt": "Modifié",
+    "actions": "Actions",
+    "noDocuments": "Aucun document trouvé.",
+    "types": {
+      "sop": "SOP",
+      "notfall_checkliste": "Liste de contrôle d'urgence",
+      "arbeitsplatz_checkliste": "Liste de contrôle du poste de travail",
+      "einwilligungsbogen": "Formulaire de consentement",
+      "qualitaetsdokument": "Document qualité",
+      "formular_vorlage": "Formulaire / Modèle",
+      "schulungsunterlage": "Matériel de formation",
+      "geraete_wartung": "Documentation équipement"
+    },
+    "statuses": {
+      "entwurf": "Brouillon",
+      "in_pruefung": "En révision",
+      "freigegeben": "Approuvé",
+      "in_revision": "En modification",
+      "archiviert": "Archivé"
+    },
+    "workflow": {
+      "einstufig": "Étape unique",
+      "zweistufig": "Deux étapes",
+      "dreistufig": "Trois étapes"
+    },
+    "detail": {
+      "overview": "Aperçu",
+      "content": "Contenu",
+      "history": "Historique des modifications",
+      "confirmations": "Confirmations de lecture",
+      "workflow": "Workflow d'approbation",
+      "sendForReview": "Envoyer pour révision",
+      "approve": "Approuver",
+      "reject": "Rejeter",
+      "archive": "Archiver",
+      "startRevision": "Démarrer la révision",
+      "readAndConfirm": "Lu et compris",
+      "alreadyConfirmed": "Déjà confirmé le {date}",
+      "confirmationRequired": "Ce document nécessite votre confirmation de lecture.",
+      "confirmationDialog": {
+        "title": "Confirmation de lecture",
+        "description": "Je confirme par la présente avoir lu et compris le document \"{title}\" (Version {version}).",
+        "confirm": "Oui, je confirme avoir lu ce document"
+      }
+    },
+    "upload": {
+      "title": "Créer un nouveau document",
+      "dragDrop": "Faites glisser le fichier ici ou cliquez pour sélectionner",
+      "supportedFormats": "Formats supportés: PDF, DOCX, XLSX, PPTX, JPG, PNG",
+      "maxSize": "Taille maximale du fichier: 50 Mo"
+    }
+  },
+  "tasks": {
+    "title": "Mes tâches",
+    "pending": "En attente",
+    "completed": "Terminé",
+    "overdue": "En retard",
+    "noTasks": "Aucune tâche en attente.",
+    "dueDate": "Échéance",
+    "taskType": {
+      "pruefung": "Révision",
+      "freigabe": "Approbation",
+      "lesebestaetigung": "Confirmation de lecture"
+    }
+  },
+  "reports": {
+    "title": "Rapports",
+    "auditTrail": "Piste d'audit",
+    "trainingStatus": "État de la formation",
+    "expiringDocuments": "Documents expirant",
+    "documentList": "Liste des documents",
+    "generateReport": "Générer un rapport",
+    "exportCsv": "Exporter en CSV",
+    "exportPdf": "Exporter en PDF",
+    "dateRange": "Période",
+    "from": "Du",
+    "to": "Au",
+    "columns": {
+      "user": "Utilisateur",
+      "role": "Rôle",
+      "action": "Action",
+      "document": "Document",
+      "version": "Version",
+      "timestamp": "Horodatage",
+      "confirmed": "Confirmé",
+      "notConfirmed": "Non confirmé"
+    }
+  },
+  "settings": {
+    "title": "Paramètres",
+    "profile": "Profil",
+    "security": "Sécurité",
+    "language": "Langue",
+    "notifications": "Notifications",
+    "mfa": {
+      "title": "Authentification à deux facteurs",
+      "enable": "Activer l'AMF",
+      "disable": "Désactiver l'AMF",
+      "setup": "Configurer l'AMF",
+      "scanQr": "Scannez le code QR avec votre application d'authentification",
+      "enterCode": "Saisissez le code généré pour terminer la configuration",
+      "backupCodes": "Codes de secours",
+      "backupCodesDescription": "Conservez ces codes de secours en lieu sûr. Vous pouvez utiliser chaque code une fois si vous n'avez pas accès à votre application d'authentification.",
+      "enabled": "L'AMF est activée",
+      "disabled": "L'AMF n'est pas activée"
+    },
+    "password": {
+      "change": "Changer le mot de passe",
+      "current": "Mot de passe actuel",
+      "new": "Nouveau mot de passe",
+      "confirm": "Confirmer le mot de passe",
+      "requirements": "Min. 12 caractères, majuscules/minuscules, chiffre et caractère spécial"
+    }
+  },
+  "notifications": {
+    "title": "Notifications",
+    "markAllRead": "Tout marquer comme lu",
+    "noNotifications": "Aucune nouvelle notification",
+    "types": {
+      "review_requested": "Tâche de révision",
+      "approval_requested": "Tâche d'approbation",
+      "document_approved": "Document approuvé",
+      "document_rejected": "Document rejeté",
+      "read_confirmation_required": "Confirmation de lecture",
+      "validity_expiring": "Validité expire",
+      "task_overdue": "Tâche en retard"
+    }
+  },
+  "roles": {
+    "systemadmin": "Administrateur système",
+    "qm_beauftragter": "Responsable QM",
+    "abteilungsleitung": "Chef de département",
+    "facharzt": "Médecin anesthésiste",
+    "pflegefachperson": "Infirmière anesthésiste",
+    "externer_auditor": "Auditeur externe"
+  },
+  "errors": {
+    "generic": "Une erreur s'est produite. Veuillez réessayer.",
+    "notFound": "Page introuvable.",
+    "unauthorized": "Vous n'êtes pas autorisé pour cette action.",
+    "forbidden": "Accès refusé.",
+    "networkError": "Erreur réseau. Veuillez vérifier votre connexion.",
+    "archivedDocument": "Ce document est archivé et ne peut pas être modifié.",
+    "documentLocked": "Ce document est verrouillé."
+  }
+}

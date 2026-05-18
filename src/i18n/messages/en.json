@@ -1,0 +1,233 @@
+{
+  "common": {
+    "appName": "DMS Rennbahnklinik",
+    "department": "Anaesthesiology Department",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close",
+    "confirm": "Confirm",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "search": "Search",
+    "filter": "Filter",
+    "export": "Export",
+    "upload": "Upload",
+    "download": "Download",
+    "view": "View",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "yes": "Yes",
+    "no": "No",
+    "all": "All",
+    "none": "None",
+    "required": "Required",
+    "optional": "Optional",
+    "noResults": "No results found",
+    "version": "Version"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "documents": "Documents",
+    "tasks": "My Tasks",
+    "reports": "Reports",
+    "settings": "Settings",
+    "admin": "Administration",
+    "logout": "Logout",
+    "profile": "Profile"
+  },
+  "auth": {
+    "login": "Login",
+    "logout": "Logout",
+    "email": "Email Address",
+    "password": "Password",
+    "forgotPassword": "Forgot password?",
+    "signInWith": "Sign in with",
+    "ssoLogin": "Sign in with Active Directory (SSO)",
+    "mfaTitle": "Two-Factor Authentication",
+    "mfaDescription": "Enter the 6-digit code from your authenticator app.",
+    "mfaCode": "Authenticator Code",
+    "mfaBackupCode": "Use backup code",
+    "verifyMfa": "Verify code",
+    "invalidCredentials": "Invalid email address or password.",
+    "sessionExpired": "Your session has expired. Please log in again.",
+    "accountDisabled": "Your account is disabled. Contact the administrator.",
+    "loginTitle": "Welcome to DMS",
+    "loginSubtitle": "Document Management System, Anaesthesiology Department, Rennbahnklinik"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome, {name}",
+    "stats": {
+      "totalDocuments": "Total Documents",
+      "pendingTasks": "Pending Tasks",
+      "expiringDocuments": "Expiring Soon",
+      "readConfirmationsPending": "Pending Read Confirmations"
+    },
+    "recentDocuments": "Recently Modified Documents",
+    "myTasks": "My Tasks",
+    "expiringDocuments": "Expiring Documents",
+    "documentsByStatus": "Documents by Status",
+    "trainingStatus": "Training Status"
+  },
+  "documents": {
+    "title": "Documents",
+    "new": "New Document",
+    "search": "Search documents...",
+    "filters": "Filters",
+    "documentNumber": "Document No.",
+    "documentTitle": "Title",
+    "documentType": "Type",
+    "status": "Status",
+    "version": "Version",
+    "owner": "Owner",
+    "validUntil": "Valid Until",
+    "updatedAt": "Modified",
+    "actions": "Actions",
+    "noDocuments": "No documents found.",
+    "types": {
+      "sop": "SOP",
+      "notfall_checkliste": "Emergency Checklist",
+      "arbeitsplatz_checkliste": "Workplace Checklist",
+      "einwilligungsbogen": "Consent Form",
+      "qualitaetsdokument": "Quality Document",
+      "formular_vorlage": "Form / Template",
+      "schulungsunterlage": "Training Material",
+      "geraete_wartung": "Equipment Documentation"
+    },
+    "statuses": {
+      "entwurf": "Draft",
+      "in_pruefung": "In Review",
+      "freigegeben": "Approved",
+      "in_revision": "In Revision",
+      "archiviert": "Archived"
+    },
+    "workflow": {
+      "einstufig": "Single Stage",
+      "zweistufig": "Two Stage",
+      "dreistufig": "Three Stage"
+    },
+    "detail": {
+      "overview": "Overview",
+      "content": "Content",
+      "history": "Change History",
+      "confirmations": "Read Confirmations",
+      "workflow": "Approval Workflow",
+      "sendForReview": "Send for Review",
+      "approve": "Approve",
+      "reject": "Reject",
+      "archive": "Archive",
+      "startRevision": "Start Revision",
+      "readAndConfirm": "Read and Understood",
+      "alreadyConfirmed": "Already confirmed on {date}",
+      "confirmationRequired": "This document requires your read confirmation.",
+      "confirmationDialog": {
+        "title": "Read Confirmation",
+        "description": "I hereby confirm that I have read and understood the document \"{title}\" (Version {version}).",
+        "confirm": "Yes, I confirm I have read this document"
+      }
+    },
+    "upload": {
+      "title": "Create New Document",
+      "dragDrop": "Drag file here or click to select",
+      "supportedFormats": "Supported formats: PDF, DOCX, XLSX, PPTX, JPG, PNG",
+      "maxSize": "Maximum file size: 50 MB"
+    }
+  },
+  "tasks": {
+    "title": "My Tasks",
+    "pending": "Pending",
+    "completed": "Completed",
+    "overdue": "Overdue",
+    "noTasks": "No pending tasks.",
+    "dueDate": "Due",
+    "taskType": {
+      "pruefung": "Review",
+      "freigabe": "Approval",
+      "lesebestaetigung": "Read Confirmation"
+    }
+  },
+  "reports": {
+    "title": "Reports",
+    "auditTrail": "Audit Trail",
+    "trainingStatus": "Training Status",
+    "expiringDocuments": "Expiring Documents",
+    "documentList": "Document List",
+    "generateReport": "Generate Report",
+    "exportCsv": "Export as CSV",
+    "exportPdf": "Export as PDF",
+    "dateRange": "Date Range",
+    "from": "From",
+    "to": "To",
+    "columns": {
+      "user": "User",
+      "role": "Role",
+      "action": "Action",
+      "document": "Document",
+      "version": "Version",
+      "timestamp": "Timestamp",
+      "confirmed": "Confirmed",
+      "notConfirmed": "Not Confirmed"
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "profile": "Profile",
+    "security": "Security",
+    "language": "Language",
+    "notifications": "Notifications",
+    "mfa": {
+      "title": "Two-Factor Authentication",
+      "enable": "Enable MFA",
+      "disable": "Disable MFA",
+      "setup": "Set up MFA",
+      "scanQr": "Scan the QR code with your authenticator app",
+      "enterCode": "Enter the generated code to complete setup",
+      "backupCodes": "Backup Codes",
+      "backupCodesDescription": "Store these backup codes securely. You can use each code once if you don't have access to your authenticator app.",
+      "enabled": "MFA is enabled",
+      "disabled": "MFA is not enabled"
+    },
+    "password": {
+      "change": "Change Password",
+      "current": "Current Password",
+      "new": "New Password",
+      "confirm": "Confirm Password",
+      "requirements": "Min. 12 characters, upper/lowercase, number and special character"
+    }
+  },
+  "notifications": {
+    "title": "Notifications",
+    "markAllRead": "Mark all as read",
+    "noNotifications": "No new notifications",
+    "types": {
+      "review_requested": "Review Task",
+      "approval_requested": "Approval Task",
+      "document_approved": "Document Approved",
+      "document_rejected": "Document Rejected",
+      "read_confirmation_required": "Read Confirmation",
+      "validity_expiring": "Validity Expiring",
+      "task_overdue": "Overdue Task"
+    }
+  },
+  "roles": {
+    "systemadmin": "System Administrator",
+    "qm_beauftragter": "QM Officer",
+    "abteilungsleitung": "Department Head",
+    "facharzt": "Anaesthesia Physician",
+    "pflegefachperson": "Anaesthesia Nurse",
+    "externer_auditor": "External Auditor"
+  },
+  "errors": {
+    "generic": "An error occurred. Please try again.",
+    "notFound": "Page not found.",
+    "unauthorized": "You are not authorized for this action.",
+    "forbidden": "Access denied.",
+    "networkError": "Network error. Please check your connection.",
+    "archivedDocument": "This document is archived and cannot be modified.",
+    "documentLocked": "This document is locked."
+  }
+}

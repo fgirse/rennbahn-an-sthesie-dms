@@ -1,0 +1,233 @@
+{
+  "common": {
+    "appName": "DMS Rennbahnklinik",
+    "department": "Dipartimento di anestesiologia",
+    "save": "Salva",
+    "cancel": "Annulla",
+    "delete": "Elimina",
+    "edit": "Modifica",
+    "close": "Chiudi",
+    "confirm": "Conferma",
+    "loading": "Caricamento...",
+    "error": "Errore",
+    "success": "Successo",
+    "search": "Cerca",
+    "filter": "Filtra",
+    "export": "Esporta",
+    "upload": "Carica",
+    "download": "Scarica",
+    "view": "Visualizza",
+    "back": "Indietro",
+    "next": "Avanti",
+    "previous": "Precedente",
+    "yes": "Sì",
+    "no": "No",
+    "all": "Tutti",
+    "none": "Nessuno",
+    "required": "Obbligatorio",
+    "optional": "Facoltativo",
+    "noResults": "Nessun risultato trovato",
+    "version": "Versione"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "documents": "Documenti",
+    "tasks": "I miei compiti",
+    "reports": "Rapporti",
+    "settings": "Impostazioni",
+    "admin": "Amministrazione",
+    "logout": "Disconnetti",
+    "profile": "Profilo"
+  },
+  "auth": {
+    "login": "Accedi",
+    "logout": "Disconnetti",
+    "email": "Indirizzo e-mail",
+    "password": "Password",
+    "forgotPassword": "Password dimenticata?",
+    "signInWith": "Accedi con",
+    "ssoLogin": "Accedi con Active Directory (SSO)",
+    "mfaTitle": "Autenticazione a due fattori",
+    "mfaDescription": "Inserisci il codice a 6 cifre dalla tua app di autenticazione.",
+    "mfaCode": "Codice di autenticazione",
+    "mfaBackupCode": "Usa codice di backup",
+    "verifyMfa": "Verifica codice",
+    "invalidCredentials": "Indirizzo e-mail o password non validi.",
+    "sessionExpired": "La sessione è scaduta. Effettua nuovamente l'accesso.",
+    "accountDisabled": "Il tuo account è disabilitato. Contatta l'amministratore.",
+    "loginTitle": "Benvenuto nel DMS",
+    "loginSubtitle": "Sistema di gestione documentale, Dipartimento di anestesiologia, Rennbahnklinik"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Benvenuto, {name}",
+    "stats": {
+      "totalDocuments": "Documenti totali",
+      "pendingTasks": "Attività in sospeso",
+      "expiringDocuments": "In scadenza",
+      "readConfirmationsPending": "Conferme di lettura in sospeso"
+    },
+    "recentDocuments": "Documenti recentemente modificati",
+    "myTasks": "I miei compiti",
+    "expiringDocuments": "Documenti in scadenza",
+    "documentsByStatus": "Documenti per stato",
+    "trainingStatus": "Stato della formazione"
+  },
+  "documents": {
+    "title": "Documenti",
+    "new": "Nuovo documento",
+    "search": "Cerca documenti...",
+    "filters": "Filtri",
+    "documentNumber": "N. documento",
+    "documentTitle": "Titolo",
+    "documentType": "Tipo",
+    "status": "Stato",
+    "version": "Versione",
+    "owner": "Responsabile",
+    "validUntil": "Valido fino al",
+    "updatedAt": "Modificato",
+    "actions": "Azioni",
+    "noDocuments": "Nessun documento trovato.",
+    "types": {
+      "sop": "SOP",
+      "notfall_checkliste": "Lista di controllo emergenza",
+      "arbeitsplatz_checkliste": "Lista di controllo posto di lavoro",
+      "einwilligungsbogen": "Modulo di consenso",
+      "qualitaetsdokument": "Documento di qualità",
+      "formular_vorlage": "Modulo / Modello",
+      "schulungsunterlage": "Materiale formativo",
+      "geraete_wartung": "Documentazione attrezzatura"
+    },
+    "statuses": {
+      "entwurf": "Bozza",
+      "in_pruefung": "In revisione",
+      "freigegeben": "Approvato",
+      "in_revision": "In modifica",
+      "archiviert": "Archiviato"
+    },
+    "workflow": {
+      "einstufig": "Fase singola",
+      "zweistufig": "Due fasi",
+      "dreistufig": "Tre fasi"
+    },
+    "detail": {
+      "overview": "Panoramica",
+      "content": "Contenuto",
+      "history": "Cronologia modifiche",
+      "confirmations": "Conferme di lettura",
+      "workflow": "Workflow di approvazione",
+      "sendForReview": "Invia per revisione",
+      "approve": "Approva",
+      "reject": "Rifiuta",
+      "archive": "Archivia",
+      "startRevision": "Avvia revisione",
+      "readAndConfirm": "Letto e compreso",
+      "alreadyConfirmed": "Già confermato il {date}",
+      "confirmationRequired": "Questo documento richiede la tua conferma di lettura.",
+      "confirmationDialog": {
+        "title": "Conferma di lettura",
+        "description": "Con la presente confermo di aver letto e compreso il documento \"{title}\" (Versione {version}).",
+        "confirm": "Sì, confermo di aver letto questo documento"
+      }
+    },
+    "upload": {
+      "title": "Crea nuovo documento",
+      "dragDrop": "Trascina il file qui o clicca per selezionare",
+      "supportedFormats": "Formati supportati: PDF, DOCX, XLSX, PPTX, JPG, PNG",
+      "maxSize": "Dimensione massima file: 50 MB"
+    }
+  },
+  "tasks": {
+    "title": "I miei compiti",
+    "pending": "In sospeso",
+    "completed": "Completato",
+    "overdue": "In ritardo",
+    "noTasks": "Nessun compito in sospeso.",
+    "dueDate": "Scadenza",
+    "taskType": {
+      "pruefung": "Revisione",
+      "freigabe": "Approvazione",
+      "lesebestaetigung": "Conferma di lettura"
+    }
+  },
+  "reports": {
+    "title": "Rapporti",
+    "auditTrail": "Audit trail",
+    "trainingStatus": "Stato della formazione",
+    "expiringDocuments": "Documenti in scadenza",
+    "documentList": "Elenco documenti",
+    "generateReport": "Genera rapporto",
+    "exportCsv": "Esporta come CSV",
+    "exportPdf": "Esporta come PDF",
+    "dateRange": "Periodo",
+    "from": "Dal",
+    "to": "Al",
+    "columns": {
+      "user": "Utente",
+      "role": "Ruolo",
+      "action": "Azione",
+      "document": "Documento",
+      "version": "Versione",
+      "timestamp": "Timestamp",
+      "confirmed": "Confermato",
+      "notConfirmed": "Non confermato"
+    }
+  },
+  "settings": {
+    "title": "Impostazioni",
+    "profile": "Profilo",
+    "security": "Sicurezza",
+    "language": "Lingua",
+    "notifications": "Notifiche",
+    "mfa": {
+      "title": "Autenticazione a due fattori",
+      "enable": "Abilita MFA",
+      "disable": "Disabilita MFA",
+      "setup": "Configura MFA",
+      "scanQr": "Scansiona il codice QR con la tua app di autenticazione",
+      "enterCode": "Inserisci il codice generato per completare la configurazione",
+      "backupCodes": "Codici di backup",
+      "backupCodesDescription": "Conserva questi codici di backup in modo sicuro. Puoi usare ogni codice una volta se non hai accesso alla tua app di autenticazione.",
+      "enabled": "MFA è abilitata",
+      "disabled": "MFA non è abilitata"
+    },
+    "password": {
+      "change": "Cambia password",
+      "current": "Password attuale",
+      "new": "Nuova password",
+      "confirm": "Conferma password",
+      "requirements": "Min. 12 caratteri, maiuscole/minuscole, numero e carattere speciale"
+    }
+  },
+  "notifications": {
+    "title": "Notifiche",
+    "markAllRead": "Segna tutto come letto",
+    "noNotifications": "Nessuna nuova notifica",
+    "types": {
+      "review_requested": "Attività di revisione",
+      "approval_requested": "Attività di approvazione",
+      "document_approved": "Documento approvato",
+      "document_rejected": "Documento rifiutato",
+      "read_confirmation_required": "Conferma di lettura",
+      "validity_expiring": "Validità in scadenza",
+      "task_overdue": "Attività in ritardo"
+    }
+  },
+  "roles": {
+    "systemadmin": "Amministratore di sistema",
+    "qm_beauftragter": "Responsabile QM",
+    "abteilungsleitung": "Capo reparto",
+    "facharzt": "Medico anestesista",
+    "pflegefachperson": "Infermiere anestesista",
+    "externer_auditor": "Revisore esterno"
+  },
+  "errors": {
+    "generic": "Si è verificato un errore. Riprova.",
+    "notFound": "Pagina non trovata.",
+    "unauthorized": "Non sei autorizzato per questa azione.",
+    "forbidden": "Accesso negato.",
+    "networkError": "Errore di rete. Controlla la connessione.",
+    "archivedDocument": "Questo documento è archiviato e non può essere modificato.",
+    "documentLocked": "Questo documento è bloccato."
+  }
+}

@@ -4,6 +4,7 @@ import config from '@payload-config'
 import Link from 'next/link'
 import { AlertTriangle } from 'lucide-react'
 import { DocumentStatus } from '@/lib/types'
+import { extractId } from '@/lib/extractId'
 
 interface Props {
   locale: string
@@ -28,6 +29,7 @@ export async function ExpiringDocumentsWidget({ locale }: Props) {
     limit: 5,
     sort: 'validUntil',
     depth: 0,
+    locale: (locale as 'de' | 'en' | 'fr' | 'it') || 'de',
   })
 
   return (
@@ -48,7 +50,7 @@ export async function ExpiringDocumentsWidget({ locale }: Props) {
             return (
               <Link
                 key={String(doc.id)}
-                href={`/${locale}/dokumente/${String(doc.id)}`}
+                href={`/${locale}/dokumente/${extractId(doc.id)}`}
                 className="flex items-start gap-3 px-5 py-3.5 hover:bg-[var(--color-muted)] transition-colors"
               >
                 <AlertTriangle className={`mt-0.5 h-4 w-4 flex-shrink-0 ${daysLeft !== null && daysLeft <= 7 ? 'text-red-500' : 'text-amber-500'}`} />

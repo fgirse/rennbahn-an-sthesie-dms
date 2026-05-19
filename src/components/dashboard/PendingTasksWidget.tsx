@@ -4,6 +4,7 @@ import config from '@payload-config'
 import Link from 'next/link'
 import { CheckSquare, Clock } from 'lucide-react'
 import { cn } from '@/lib/cn'
+import { extractId } from '@/lib/extractId'
 
 interface Props {
   userId: string
@@ -25,6 +26,7 @@ export async function PendingTasksWidget({ userId, locale }: Props) {
     depth: 1,
     limit: 5,
     sort: 'dueDate',
+    locale: (locale as 'de' | 'en' | 'fr' | 'it') || 'de',
   })
 
   return (
@@ -48,7 +50,7 @@ export async function PendingTasksWidget({ userId, locale }: Props) {
             return (
               <Link
                 key={String(task.id)}
-                href={`/${locale}/dokumente/${String(doc?.id || '')}`}
+                href={`/${locale}/dokumente/${extractId(doc?.id)}`}
                 className="flex items-start gap-3 px-5 py-3.5 hover:bg-[var(--color-muted)] transition-colors"
               >
                 <Clock className={cn('mt-0.5 h-4 w-4 flex-shrink-0', isOverdue ? 'text-red-500' : 'text-amber-500')} />

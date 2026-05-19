@@ -8,6 +8,7 @@ import { CheckCircle, Clock, AlertTriangle, BookOpen, FileCheck } from 'lucide-r
 import { AppShell } from '@/components/layout/AppShell'
 import { DocumentStatusBadge } from '@/components/documents/DocumentStatusBadge'
 import { UserRole } from '@/lib/types'
+import { extractId } from '@/lib/extractId'
 import { format } from 'date-fns'
 import { de, enUS, fr, it } from 'date-fns/locale'
 
@@ -173,7 +174,7 @@ export default async function TasksPage({ params }: Props) {
                         </span>
                         {doc && (
                           <Link
-                            href={`/${locale}/dokumente/${String(doc.id)}`}
+                            href={`/${locale}/dokumente/${extractId(doc.id)}`}
                             className="truncate font-medium text-[var(--color-primary)] hover:underline"
                           >
                             {String(doc.title || '—')}
@@ -188,7 +189,7 @@ export default async function TasksPage({ params }: Props) {
                     </div>
                     {doc && (
                       <Link
-                        href={`/${locale}/dokumente/${String(doc.id)}`}
+                        href={`/${locale}/dokumente/${extractId(doc.id)}`}
                         className="flex-shrink-0 rounded-lg bg-[var(--color-primary)] px-3 py-1.5 text-xs font-medium text-white hover:opacity-90"
                       >
                         Öffnen
@@ -225,7 +226,7 @@ export default async function TasksPage({ params }: Props) {
                         </span>
                         {doc && (
                           <Link
-                            href={`/${locale}/dokumente/${String(doc.id)}`}
+                            href={`/${locale}/dokumente/${extractId(doc.id)}`}
                             className="truncate font-medium text-[var(--color-primary)] hover:underline"
                           >
                             {String(doc.title || '—')}
@@ -246,7 +247,7 @@ export default async function TasksPage({ params }: Props) {
                     </div>
                     {doc && (
                       <Link
-                        href={`/${locale}/dokumente/${String(doc.id)}`}
+                        href={`/${locale}/dokumente/${extractId(doc.id)}`}
                         className="flex-shrink-0 rounded-lg border border-[var(--color-border)] px-3 py-1.5 text-xs font-medium hover:bg-[var(--color-muted)]"
                       >
                         Öffnen
@@ -271,7 +272,7 @@ export default async function TasksPage({ params }: Props) {
                 <div key={String(doc.id)} className="flex items-center justify-between gap-3 px-5 py-3">
                   <div className="min-w-0 flex-1">
                     <Link
-                      href={`/${locale}/dokumente/${String(doc.id)}`}
+                      href={`/${locale}/dokumente/${extractId(doc.id)}`}
                       className="truncate font-medium text-[var(--color-primary)] hover:underline"
                     >
                       {String(doc.title)}
@@ -282,7 +283,7 @@ export default async function TasksPage({ params }: Props) {
                     </p>
                   </div>
                   <Link
-                    href={`/${locale}/dokumente/${String(doc.id)}`}
+                    href={`/${locale}/dokumente/${extractId(doc.id)}`}
                     className="flex-shrink-0 flex items-center gap-1.5 rounded-lg bg-purple-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-purple-700"
                   >
                     <CheckCircle className="h-3.5 w-3.5" />

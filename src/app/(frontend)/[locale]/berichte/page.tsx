@@ -6,6 +6,7 @@ import { redirect } from 'next/navigation'
 import { AppShell } from '@/components/layout/AppShell'
 import { UserRole } from '@/lib/types'
 import type { Where } from 'payload'
+import { extractId } from '@/lib/extractId'
 import { Download, FileText, Users, Clock } from 'lucide-react'
 import { format } from 'date-fns'
 import { de } from 'date-fns/locale'
@@ -209,11 +210,14 @@ export default async function ReportsPage({ params, searchParams }: Props) {
                           </span>
                         </td>
                         <td className="hidden max-w-xs truncate px-4 py-3 text-[var(--color-muted-foreground)] md:table-cell">
-                          {log.documentId ? (
-                            <Link href={`/${locale}/dokumente/${String(log.documentId)}`} className="hover:text-[var(--color-primary)] hover:underline">
-                              {String(log.documentTitle || log.documentId)}
-                            </Link>
-                          ) : '—'}
+                          {(() => {
+                            const auditDocId = extractId(log.documentId)
+                            return auditDocId ? (
+                              <Link href={`/${locale}/dokumente/${auditDocId}`} className="hover:text-[var(--color-primary)] hover:underline">
+                                {String(log.documentTitle || auditDocId)}
+                              </Link>
+                            ) : '—'
+                          })()}
                         </td>
                         <td className="hidden px-4 py-3 font-mono text-xs text-[var(--color-muted-foreground)] lg:table-cell">
                           {log.documentVersion ? `v${String(log.documentVersion)}` : '—'}
@@ -285,17 +289,19 @@ export default async function ReportsPage({ params, searchParams }: Props) {
                     </tr>
                   ) : (
                     readConfirmations.docs.map((conf) => {
-                      const confirmedUser = typeof conf.user === 'object' ? conf.user : null
-                      const confirmedDoc = typeof conf.document === 'object' ? conf.document : null
+                      const confirmedUser = typeof conf.user === 'object' && conf.user !== null ? conf.user as Record<string, unknown> : null
+                      const confirmedDoc = typeof conf.document === 'object' && conf.document !== null ? conf.document as Record<string, unknown> : null
+                      const confirmedDocId = confirmedDoc ? extractId(confirmedDoc.id) : ''
+                      const confirmedDocTitle = confirmedDoc ? String(confirmedDoc.title || confirmedDocId || '—') : '—'
                       return (
                         <tr key={String(conf.id)} className="hover:bg-[var(--color-muted)] transition-colors">
                           <td className="px-4 py-3 font-medium">
                             {confirmedUser ? String(confirmedUser.name || confirmedUser.email || '—') : '—'}
                           </td>
                           <td className="px-4 py-3 text-[var(--color-muted-foreground)]">
-                            {confirmedDoc ? (
-                              <Link href={`/${locale}/dokumente/${String(confirmedDoc.id)}`} className="hover:text-[var(--color-primary)] hover:underline">
-                                {String((confirmedDoc as { title?: string }).title || confirmedDoc.id)}
+                            {confirmedDocId ? (
+                              <Link href={`/${locale}/dokumente/${confirmedDocId}`} className="hover:text-[var(--color-primary)] hover:underline">
+                                {confirmedDocTitle}
                               </Link>
                             ) : '—'}
                           </td>
@@ -359,7 +365,7 @@ export default async function ReportsPage({ params, searchParams }: Props) {
                             {String(doc.documentNumber || '—')}
                           </td>
                           <td className="px-4 py-3">
-                            <Link href={`/${locale}/dokumente/${String(doc.id)}`} className="font-medium text-[var(--color-primary)] hover:underline">
+                            <Link href={`/${locale}/dokumente/${extractId(doc.id)}`} className="font-medium text-[var(--color-primary)] hover:underline">
                               {String(doc.title)}
                             </Link>
                           </td>

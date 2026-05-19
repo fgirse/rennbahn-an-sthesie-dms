@@ -9,6 +9,7 @@ import { AppShell } from '@/components/layout/AppShell'
 import { DocumentStatusBadge } from '@/components/documents/DocumentStatusBadge'
 import { UserRole, DocumentStatus } from '@/lib/types'
 import type { Where } from 'payload'
+import { extractId } from '@/lib/extractId'
 
 type Props = {
   params: Promise<{ locale: string }>
@@ -152,7 +153,7 @@ export default async function DocumentsPage({ params, searchParams }: Props) {
                         {String(doc.documentNumber || '—')}
                       </td>
                       <td className="px-4 py-3">
-                        <Link href={`/${locale}/dokumente/${String(doc.id)}`} className="font-medium text-[var(--color-primary)] hover:underline">
+                        <Link href={`/${locale}/dokumente/${extractId(doc.id)}`} className="font-medium text-[var(--color-primary)] hover:underline">
                           {String(doc.title)}
                         </Link>
                       </td>

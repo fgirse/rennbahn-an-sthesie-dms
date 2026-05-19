@@ -9,18 +9,7 @@ export const Media: CollectionConfig = {
   },
   access: {
     create: ({ req }) => Boolean(req.user),
-    read: ({ req }) => {
-      const role = req.user?.role as UserRole
-      if (!role) return false
-      return (
-        role === UserRole.SYSTEM_ADMIN ||
-        role === UserRole.QM_OFFICER ||
-        role === UserRole.DEPT_HEAD ||
-        role === UserRole.PHYSICIAN ||
-        role === UserRole.NURSE ||
-        role === UserRole.AUDITOR
-      )
-    },
+    read: ({ req }) => Boolean(req.user), // any authenticated user can view media files
     update: ({ req }) => {
       const role = req.user?.role as UserRole
       return role === UserRole.SYSTEM_ADMIN || role === UserRole.QM_OFFICER

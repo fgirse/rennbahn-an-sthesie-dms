@@ -25,11 +25,30 @@ const securityHeaders = [
   },
 ]
 
+// Media files must be embeddable in the DocumentViewer iframe (same origin only)
+const mediaHeaders = [
+  { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+  {
+    key: 'Content-Security-Policy',
+    value: [
+      "default-src 'self'",
+      "script-src 'self' 'unsafe-inline'",
+      "style-src 'self' 'unsafe-inline'",
+      "img-src 'self' data: blob:",
+      "frame-ancestors 'self'",
+    ].join('; '),
+  },
+]
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   allowedDevOrigins: ['192.168.1.183'],
   headers: async () => [
-    { source: '/(.*)', headers: securityHeaders },
+    // Media routes — allow same-origin iframe embedding (DocumentViewer)
+    { source: '/api/media(.*)', headers: mediaHeaders },
+    { source: '/media(.*)', headers: mediaHeaders },
+    // All other routes — deny framing entirely (excludes media paths via negative lookahead)
+    { source: '/((?!api/media|media).*)', headers: securityHeaders },
   ],
 }
 

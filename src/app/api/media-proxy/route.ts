@@ -60,15 +60,31 @@ export async function GET(req: NextRequest) {
     const isLocal = parsedUrl.hostname === 'localhost' || parsedUrl.hostname === '127.0.0.1'
 
     if (isLocal) {
-      // Local disk storage — read file directly to avoid circular HTTP request
-      const filePath = path.join(process.cwd(), 'public', parsedUrl.pathname)
-      let fileBuffer: Buffer
-      try {
-        fileBuffer = await fs.readFile(filePath)
-      } catch (err) {
-        console.error('[media-proxy] readFile failed:', filePath, err)
+      // Local disk storage — read file directly to avoid circular HTTP request.
+      // Try several candidate paths because Payload v3 staticDir varies by config.
+      const mediaFilename = String(media.filename || '')
+      const candidates = [
+        path.join(process.cwd(), 'public', parsedUrl.pathname),          // public/media/file.pdf
+        path.join(process.cwd(), parsedUrl.pathname.replace(/^\//, '')), // media/file.pdf
+        path.join(process.cwd(), 'public', 'media', mediaFilename),      // public/media/<filename>
+        path.join(process.cwd(), 'media', mediaFilename),                // media/<filename>
+      ]
+
+      let fileBuffer: Buffer | null = null
+      for (const candidate of candidates) {
+        try {
+          fileBuffer = await fs.readFile(candidate)
+          break
+        } catch {
+          // try next candidate
+        }
+      }
+
+      if (!fileBuffer) {
+        console.error('[media-proxy] file not found on disk. Tried:', candidates)
         return new NextResponse('File not found on disk', { status: 404 })
       }
+
       return new NextResponse(new Uint8Array(fileBuffer), { headers: responseHeaders })
     }
 

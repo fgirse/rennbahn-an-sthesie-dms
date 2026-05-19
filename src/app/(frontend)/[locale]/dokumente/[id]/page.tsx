@@ -103,10 +103,10 @@ export default async function DocumentDetailPage({ params }: Props) {
             <ArrowLeft className="h-4 w-4" />
             {t('title')}
           </Link>
-          {contentFile && (
+          {contentFile?.url && (
             <a
-              href={String(contentFile.url || '')}
-              download
+              href={`/api/media-proxy?id=${String(contentFile.id)}`}
+              download={String((contentFile as Record<string, unknown>).filename || doc.title)}
               className="flex items-center gap-2 rounded-lg border border-[var(--color-border)] px-3 py-1.5 text-sm hover:bg-[var(--color-muted)]"
             >
               <Download className="h-4 w-4" />
@@ -169,10 +169,10 @@ export default async function DocumentDetailPage({ params }: Props) {
           )}
         </div>
 
-        {/* Document viewer */}
+        {/* Document viewer — uses proxy so framing headers are under our control in all envs */}
         {contentFile?.url && (
           <DocumentViewer
-            url={String(contentFile.url)}
+            url={`/api/media-proxy?id=${String(contentFile.id)}`}
             filename={String((contentFile as Record<string, unknown>).filename || doc.title)}
             mimeType={String((contentFile as Record<string, unknown>).mimeType || '')}
           />

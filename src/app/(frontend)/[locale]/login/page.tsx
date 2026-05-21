@@ -15,7 +15,7 @@ export default async function LoginPage({ params }: Props) {
         {/* Logo card */}
         <div className="mb-6 text-center">
           <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-white shadow-lg">
-            <svg viewBox="0 0 24 24" className="h-9 w-9 text-[var(--color-primary)]" fill="currentColor">
+            <svg viewBox="0 0 24 24" className="h-9 w-9 text-[#45E1A1]" fill="currentColor">
               <path d="M12 2L2 7v10c0 5.55 3.84 10.74 10 12 6.16-1.26 10-6.45 10-12V7L12 2zm0 4l6 3v8c0 3.73-2.47 7.18-6 8.39C8.47 24.18 6 20.73 6 17V9l6-3z"/>
             </svg>
           </div>
@@ -30,7 +30,7 @@ export default async function LoginPage({ params }: Props) {
 
         {/* Footer */}
         <div className="flex flex-col items-center justify-center">
-          <Image src={LogoRennbahnKlinik} alt="Rennbahnklinik Logo" className="mt-6 h-24 w-auto rounded-xl" />
+          <Image src={LogoRennbahnKlinik} alt="Rennbahnklinik Logo" className="mt-12  h-60 w-auto rounded-xl" />
           <p className="mt-6 text-center text-xs text-white/50">
             Rennbahnklinik Muttenz · Abteilung Anästhesiologie
           </p>

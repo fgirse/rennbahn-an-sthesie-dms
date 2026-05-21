@@ -9,6 +9,9 @@
     "src/app/api/[...payload]/route.ts": {
       "maxDuration": 60
     },
+    "src/app/api/media-proxy/route.ts": {
+      "maxDuration": 60
+    },
     "src/app/api/cron/expiry-check/route.ts": {
       "maxDuration": 300
     }

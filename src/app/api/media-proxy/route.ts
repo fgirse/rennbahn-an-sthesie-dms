@@ -88,38 +88,40 @@ export async function GET(req: NextRequest) {
       return new NextResponse(new Uint8Array(fileBuffer), { headers: responseHeaders })
     }
 
-    // External storage (Vercel Blob) — proxy with range request support so
-    // the browser PDF viewer can load pages on demand (fixes single-page issue
-    // in production where Content-Length / Accept-Ranges were not forwarded).
-    const rangeHeader = req.headers.get('range')
-    const upstreamFetchHeaders: Record<string, string> = {}
-    if (rangeHeader) {
-      upstreamFetchHeaders['Range'] = rangeHeader
-    }
-
+    // External storage (Vercel Blob) — buffer the full response before returning.
+    // Vercel serverless functions do not truly stream responses; without buffering
+    // the complete file and setting an exact Content-Length, the browser PDF viewer
+    // cannot determine the total file size and only renders the first page.
     let fileRes: Response
     try {
-      fileRes = await fetch(fileUrl, { headers: upstreamFetchHeaders })
+      fileRes = await fetch(fileUrl)
     } catch (err) {
       console.error('[media-proxy] fetch failed:', fileUrl, err)
       return new NextResponse('Could not retrieve file', { status: 502 })
     }
 
-    if (!fileRes.ok && fileRes.status !== 206) {
+    if (!fileRes.ok) {
       console.error('[media-proxy] upstream status', fileRes.status, 'for', fileUrl)
       return new NextResponse('Upstream file not available', { status: 502 })
     }
 
-    // Forward headers that are required for full PDF rendering in iframes
-    const finalHeaders: Record<string, string> = { ...responseHeaders }
-    const contentLength = fileRes.headers.get('content-length')
-    const acceptRanges = fileRes.headers.get('accept-ranges')
-    const contentRange = fileRes.headers.get('content-range')
-    if (contentLength) finalHeaders['Content-Length'] = contentLength
-    if (acceptRanges) finalHeaders['Accept-Ranges'] = acceptRanges
-    if (contentRange) finalHeaders['Content-Range'] = contentRange
+    // Buffer the complete file so Content-Length is exact and the PDF viewer
+    // can render all pages instead of only the first one.
+    let fileBuffer: ArrayBuffer
+    try {
+      fileBuffer = await fileRes.arrayBuffer()
+    } catch (err) {
+      console.error('[media-proxy] arrayBuffer() failed:', err)
+      return new NextResponse('Failed to read file', { status: 502 })
+    }
 
-    return new NextResponse(fileRes.body, { status: fileRes.status, headers: finalHeaders })
+    const finalHeaders: Record<string, string> = {
+      ...responseHeaders,
+      'Content-Length': String(fileBuffer.byteLength),
+      'Accept-Ranges': 'none',
+    }
+
+    return new NextResponse(new Uint8Array(fileBuffer), { status: 200, headers: finalHeaders })
   } catch (err) {
     console.error('[media-proxy] unhandled error:', err)
     return new NextResponse('Internal Server Error', { status: 500 })

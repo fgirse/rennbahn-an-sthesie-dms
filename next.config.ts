@@ -22,6 +22,9 @@ const securityHeaders = [
       "img-src 'self' data: blob: https:",
       "font-src 'self'",
       "connect-src 'self' https://api.resend.com",
+      // PDF.js web worker: webpack emits it as /_next/static/chunks/<hash>.mjs (self),
+      // but blob: is also listed as a fallback in case the runtime resolves it differently.
+      "worker-src blob: 'self'",
       // frame-ancestors is intentionally omitted here — set per-route (see above)
     ].join('; '),
   },
@@ -30,6 +33,17 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   allowedDevOrigins: ['192.168.1.183'],
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  webpack: (config: any) => {
+    // PDF.js tries to require 'canvas' for server-side rendering; alias it away
+    // so webpack does not try to bundle native bindings that are unavailable.
+    config.resolve = config.resolve ?? {}
+    config.resolve.alias = {
+      ...(config.resolve.alias as Record<string, string>),
+      canvas: false,
+    }
+    return config
+  },
   headers: async () => [
     // Apply base security headers to all routes.
     // Framing directives (X-Frame-Options / frame-ancestors) are handled separately:

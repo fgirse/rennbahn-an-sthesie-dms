@@ -1,7 +1,19 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import { Document, Page, pdfjs } from 'react-pdf'
+import 'react-pdf/dist/Page/AnnotationLayer.css'
+import 'react-pdf/dist/Page/TextLayer.css'
 import { Download, ChevronDown, ChevronUp, FileText, Image, Loader2 } from 'lucide-react'
+
+// Webpack emits the worker as a static asset under /_next/static/chunks/ (same-origin).
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+  'pdfjs-dist/build/pdf.worker.min.mjs',
+  import.meta.url,
+).toString()
+
+// Defined outside the component so the object reference is stable (react-pdf equality check).
+const PDF_OPTIONS = { withCredentials: true }
 
 interface Props {
   url: string
@@ -20,53 +32,23 @@ function getMimeCategory(url: string, mimeType?: string): 'pdf' | 'image' | 'oth
 
 export function DocumentViewer({ url, filename, mimeType }: Props) {
   const [expanded, setExpanded] = useState(true)
-  const [blobUrl, setBlobUrl] = useState<string | null>(null)
+  const [numPages, setNumPages] = useState<number | null>(null)
   const [loadError, setLoadError] = useState(false)
-  const blobUrlRef = useRef<string | null>(null)
+  const [containerWidth, setContainerWidth] = useState(0)
+  const containerRef = useRef<HTMLDivElement>(null)
   const category = getMimeCategory(url, mimeType)
 
-  // For PDFs: fetch via the authenticated proxy and create a blob: URL.
-  // Using a blob: URL in the iframe avoids all X-Frame-Options / CSP frame-ancestors
-  // restrictions that browsers enforce on HTTP responses — the definitive fix for
-  // Firefox (and Safari) blocking the iframe in production.
+  // Measure the container so each PDF page fills the available width on any screen size.
+  // Re-runs when expanded changes so the ref is populated after the div mounts.
   useEffect(() => {
-    if (category !== 'pdf' || !expanded) return
-
-    let cancelled = false
-    setLoadError(false)
-    setBlobUrl(null)
-
-    fetch(url, { credentials: 'same-origin' })
-      .then((res) => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`)
-        return res.blob()
-      })
-      .then((blob) => {
-        if (cancelled) return
-        // Force correct MIME type so the browser opens the PDF viewer, not a download
-        const pdfBlob = blob.type === 'application/pdf' ? blob : new Blob([blob], { type: 'application/pdf' })
-        const objectUrl = URL.createObjectURL(pdfBlob)
-        blobUrlRef.current = objectUrl
-        setBlobUrl(objectUrl)
-      })
-      .catch(() => {
-        if (!cancelled) setLoadError(true)
-      })
-
-    return () => {
-      cancelled = true
-    }
-  }, [url, category, expanded])
-
-  // Revoke the blob URL when the component unmounts to free browser memory
-  useEffect(() => {
-    return () => {
-      if (blobUrlRef.current) {
-        URL.revokeObjectURL(blobUrlRef.current)
-        blobUrlRef.current = null
-      }
-    }
-  }, [])
+    const el = containerRef.current
+    if (!el) return
+    const observer = new ResizeObserver(([entry]) => {
+      setContainerWidth(entry.contentRect.width)
+    })
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [expanded])
 
   return (
     <div className="rounded-xl border border-[var(--color-border)] bg-white shadow-sm overflow-hidden">
@@ -78,7 +60,7 @@ export function DocumentViewer({ url, filename, mimeType }: Props) {
           ) : (
             <FileText className="h-4 w-4 text-[var(--color-muted-foreground)]" />
           )}
-          <span className="text-sm font-medium text-[var(--color-foreground)] truncate max-w-xs">
+          <span className="text-sm font-medium text-[var(--color-foreground)] truncate max-w-[160px] sm:max-w-xs">
             {filename}
           </span>
         </div>
@@ -89,7 +71,7 @@ export function DocumentViewer({ url, filename, mimeType }: Props) {
             className="flex items-center gap-1.5 rounded-lg border border-[var(--color-border)] px-3 py-1.5 text-xs font-medium hover:bg-[var(--color-muted)]"
           >
             <Download className="h-3.5 w-3.5" />
-            Download
+            <span className="hidden sm:inline">Download</span>
           </a>
           {category !== 'other' && (
             <button
@@ -97,7 +79,7 @@ export function DocumentViewer({ url, filename, mimeType }: Props) {
               className="flex items-center gap-1 rounded-lg border border-[var(--color-border)] px-3 py-1.5 text-xs font-medium hover:bg-[var(--color-muted)]"
             >
               {expanded ? <ChevronUp className="h-3.5 w-3.5" /> : <ChevronDown className="h-3.5 w-3.5" />}
-              {expanded ? 'Schliessen' : 'Vorschau'}
+              <span className="hidden sm:inline">{expanded ? 'Schliessen' : 'Vorschau'}</span>
             </button>
           )}
         </div>
@@ -106,15 +88,15 @@ export function DocumentViewer({ url, filename, mimeType }: Props) {
       {/* Viewer area */}
       {expanded && (
         <>
+          {/* PDF: rendered page-by-page via PDF.js — works on all devices */}
           {category === 'pdf' && (
-            <div className="relative w-full" style={{ height: '70vh' }}>
-              {!blobUrl && !loadError && (
-                <div className="absolute inset-0 flex items-center justify-center bg-[var(--color-muted)]">
-                  <Loader2 className="h-6 w-6 animate-spin text-[var(--color-muted-foreground)]" />
-                </div>
-              )}
-              {loadError && (
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-[var(--color-muted)] text-center">
+            <div
+              ref={containerRef}
+              className="w-full overflow-y-auto bg-[var(--color-muted)]"
+              style={{ maxHeight: '80vh' }}
+            >
+              {loadError ? (
+                <div className="flex flex-col items-center justify-center gap-3 py-12 text-center">
                   <FileText className="h-8 w-8 text-[var(--color-muted-foreground)]" />
                   <p className="text-sm text-[var(--color-muted-foreground)]">
                     Vorschau konnte nicht geladen werden.
@@ -128,14 +110,31 @@ export function DocumentViewer({ url, filename, mimeType }: Props) {
                     Datei herunterladen
                   </a>
                 </div>
-              )}
-              {blobUrl && (
-                <iframe
-                  src={blobUrl}
-                  title={filename}
-                  className="h-full w-full border-0"
-                  allow="fullscreen"
-                />
+              ) : (
+                <Document
+                  file={url}
+                  options={PDF_OPTIONS}
+                  onLoadSuccess={({ numPages: n }) => { setNumPages(n); setLoadError(false) }}
+                  onLoadError={() => setLoadError(true)}
+                  loading={
+                    <div className="flex items-center justify-center py-16">
+                      <Loader2 className="h-6 w-6 animate-spin text-[var(--color-muted-foreground)]" />
+                    </div>
+                  }
+                  className="py-4"
+                >
+                  {numPages &&
+                    Array.from({ length: numPages }, (_, i) => (
+                      <div key={i + 1} className="flex justify-center px-4 pb-3">
+                        <Page
+                          pageNumber={i + 1}
+                          width={containerWidth > 32 ? containerWidth - 32 : undefined}
+                          renderAnnotationLayer
+                          renderTextLayer
+                        />
+                      </div>
+                    ))}
+                </Document>
               )}
             </div>
           )}
